@@ -11,7 +11,7 @@ let appliedEffect = {
 // This is the effect linked with UI
 let uiSelectedEffect = {};
 let errorOccurs = false;
-// let canvas = document.createElement("canvas");
+
 let canvas = new OffscreenCanvas(480,360);
 let videoFilter = new WebglVideoFilter(canvas);
 videoFilter.init();
@@ -31,7 +31,7 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
 function effectParameterChanged(effectName) {
   console.log(effectName);
   if (effectName === undefined) {
-    // If effectName is undefined, then apply the effect selected in the UI
+    // If effectName is undefined, need to clear the effect selected status.
     appliedEffect = {
       ...appliedEffect,
       ...uiSelectedEffect,
