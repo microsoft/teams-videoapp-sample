@@ -1,0 +1,18 @@
+#page_wrap {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+#client_wrap {
+  flex: 1;
+  margin-right: 2rem;
+}
+#ifrm {
+  height: 76vh;
+  width: 320px;
+}
+canvas, video {
+  max-width: 800px;
+  max-height: 500px;
+}

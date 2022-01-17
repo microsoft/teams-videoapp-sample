@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video app</title>
+</head>
+<body>
+    <h1>Video app</h1>
+    <fieldset>
+      <legend>Effect parameters in video app</legend>
+
+      <div>
+        <label for="enable_check"
+          >Enable video app
+          <input type="checkbox" id="enable_check" checked />
+        </label>
+      </div>
+      <div>
+        <label for="proportion"
+          >Proportion
+          <input type="number" id="proportion" min="1" step="0.1" value="2" />
+        </label>
+      </div>
+      <div>
+        <label for="pixel_value"
+          >Pixel value
+          <input type="number" id="pixel_value" min="0" step="1" value="100" />
+        </label>
+      </div>
+    </fieldset>
+    <script src="./sdk/dist/MicrosoftTeams.js"></script>
+    <script src="./webgl-video-filter.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

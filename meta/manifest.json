@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.0.0",
+  "showLoadingIndicator": true,
+  "id": "b15f97b7-1f9b-4bb7-ac9f-efddf27aae7b",
+  "packageName": "com.microsoft.teams.videopp",
+  "developer": {
+    "name": "Bo Lu",
+    "websiteUrl": "https://github.com/lubobill1990/Teams-VideoApp-example",
+    "privacyUrl": "https://github.com/lubobill1990/Teams-VideoApp-example",
+    "termsOfUseUrl": "https://github.com/lubobill1990/Teams-VideoApp-example"
+  },
+  "icons": {
+    "color": "icon-color.png",
+    "outline": "icon-outline.png"
+  },
+  "name": {
+    "short": "Teams VideoApp example",
+    "full": "Teams VideoApp example"
+  },
+  "description": {
+    "short": "This repo demonstrate a minimal Teams video app.",
+    "full": "Clone this repo and change the video frame processing function"
+  },
+  "accentColor": "#FFFFFF",
+  "devicePermissions": ["media"],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "CameraStream.Read.User",
+          "type": "Delegated"
+        },
+        {
+          "name": "OutgoingVideoStream.Write.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "validDomains": ["lubobill1990.github.io"],
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "meetingExtensionDefinition": {
+    "filters": [
+      {
+        "id": "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949",
+        "name": "half",
+        "thumbnail": "half.png"
+      }
+    ],
+    "videoAppContentUrl": "https://lubobill1990.github.io/Teams-VideoApp-example/app/index.html"
+  }
+}
