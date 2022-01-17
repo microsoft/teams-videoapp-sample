@@ -21,16 +21,16 @@
     }
 
     processVideoFrame(videoFrame) {
-        let gl = this.gl;
-        let width = videoFrame.width;
-        let height = videoFrame.height;
+        const gl = this.gl;
+        const width = videoFrame.width;
+        const height = videoFrame.height;
         this._setSize(width, height);
         gl.viewport(0, 0, this.canvasWidth, this.canvasHeight);
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
  
-        let uOffset = width * height;
+        const uOffset = width * height;
         gl.bindTexture(gl.TEXTURE_2D, this.textureY);
         gl.texImage2D(
             gl.TEXTURE_2D,
@@ -143,16 +143,16 @@
             }
         `;
         
-        let gl = this.gl;
-        let vertexShader = this._compileShader(vertexShaderSource, gl.VERTEX_SHADER);
-        let fragmentShader = this._compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
+        const gl = this.gl;
+        const vertexShader = this._compileShader(vertexShaderSource, gl.VERTEX_SHADER);
+        const fragmentShader = this._compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
 
-        let program = this.gl.createProgram();
+        const program = this.gl.createProgram();
         gl.attachShader(program, vertexShader);
         gl.attachShader(program, fragmentShader);
         gl.linkProgram(program);
         gl.useProgram(program);
-        let success = gl.getProgramParameter(program, gl.LINK_STATUS);
+        const success = gl.getProgramParameter(program, gl.LINK_STATUS);
         if (!success) {
             console.error('program fail to link' + gl.getShaderInfoLog(program));
             return;
@@ -161,37 +161,37 @@
     }
 
     _initVertexBuffers() {
-        let vertices = new Float32Array([
+        const vertices = new Float32Array([
             -1, -1, 0, 0.0,  0.0,
             1, -1, 0, 1.0,  0.0,
             -1, 1, 0, 0.0,  1.0,
             1, 1, 0, 1.0,  1.0,
          ]);
 
-        let gl = this.gl;
-        let program = this.program;
-        let verticeBuffer = gl.createBuffer();
+         const gl = this.gl;
+        const program = this.program;
+        const verticeBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, verticeBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-        let positionLocation = gl.getAttribLocation(program, "a_vertexPosition");
+        const positionLocation = gl.getAttribLocation(program, "a_vertexPosition");
         gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, false, 5 * 4, 0);
         gl.enableVertexAttribArray(positionLocation);
 
-        let indices = new Int16Array([
+        const indices = new Int16Array([
             0, 1, 2, 
             2, 1, 3
         ]);
-        let indicesBuffer = gl.createBuffer();
+        const indicesBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indicesBuffer);
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
-        let texcoordLocation = gl.getAttribLocation(program, "a_texturePosition");
+        const texcoordLocation = gl.getAttribLocation(program, "a_texturePosition");
         gl.vertexAttribPointer(texcoordLocation, 2, gl.FLOAT, false, 5 * 4, 3 * 4);
         gl.enableVertexAttribArray(texcoordLocation);
     }
 
     _createTexture() {
-        let gl = this.gl;
-        let texture = gl.createTexture();
+        const gl = this.gl;
+        const texture = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, texture);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
@@ -202,8 +202,8 @@
     }
 
     _initTexture() {
-        let gl = this.gl;
-        let program = this.program;
+        const gl = this.gl;
+        const program = this.program;
         this.textureY = this._createTexture();
         gl.uniform1i(gl.getUniformLocation(program, 'u_textureY'), 0);
 
@@ -213,13 +213,13 @@
     }
 
     _compileShader(shaderSource, shaderType) {
-        let gl = this.gl;
-        let shader = gl.createShader(shaderType);
+        const gl = this.gl;
+        const shader = gl.createShader(shaderType);
         gl.shaderSource(shader, shaderSource);
         gl.compileShader(shader);
-        let success = gl.getShaderParameter(shader, this.gl.COMPILE_STATUS);
+        const success = gl.getShaderParameter(shader, this.gl.COMPILE_STATUS);
         if (!success) {
-            let err = gl.getShaderInfoLog(shader);
+            const err = gl.getShaderInfoLog(shader);
             gl.deleteShader(shader);
             console.error('could not compile shader', err);
             return;
