@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0rem;
+      overflow: hidden;
+    }
+    .extension-tab {
+      height: 100%;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      position: relative;
+    }
+    .extension-tab .extension-tab-frame {
+      border: 0;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="extension-tab">
+    <iframe id="extension-tab-frame"
+            class="extension-tab-frame"
+            name="extension-tab-frame"
+            src=""
+            frameborder="0"
+            sandbox="allow-forms allow-modals allow-popups allow-pointer-lock allow-scripts allow-same-origin allow-downloads"
+            allow="geolocation *; microphone *; camera *; midi *; encrypted-media *;"
+            allowfullscreen>
+    </iframe>
+  </div>
+</body>
+</html>

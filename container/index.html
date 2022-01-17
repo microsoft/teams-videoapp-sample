@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video extensibility testing framework</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <h1>Video extensibility testing framework</h1>
+
+    <div id="page_wrap">
+      <div id="client_wrap">
+        <h2>Teams client's scope</h2>
+        <fieldset>
+          <legend>Scenario</legend>
+          <div>
+            <label for="pre_meeting">
+              <input
+                type="radio"
+                name="scenario"
+                id="pre_meeting"
+                value="pre_meeting"
+                checked
+              />
+              Pre-meeting
+            </label>
+          </div>
+          <div>
+            <label for="in_meeting">
+              <input
+                type="radio"
+                name="scenario"
+                id="in_meeting"
+                value="in_meeting"
+              />
+              In-meeting
+            </label>
+            <button id="apply_effect">Apply effect</button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Effect parameters from Teams client to video app</legend>
+          <div>
+            <label for="proportion"
+              >Proportion
+              <input
+                type="number"
+                id="proportion"
+                min="1"
+                step="0.1"
+                value="2"
+              />
+            </label>
+          </div>
+          <div>
+            <label for="pixel_value"
+              >Pixel value
+              <input
+                type="number"
+                id="pixel_value"
+                min="0"
+                step="1"
+                value="100"
+              />
+            </label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Performance options</legend>
+         
+          <div>
+            <label for="render_check"
+              >Render result to canvas
+              <input type="checkbox" id="render_check" checked />
+            </label>
+          </div>
+          <div>
+            <label for="resolution"
+              >Resolution
+              <label for="resolution_240">
+                <input
+                  type="radio"
+                  name="resolution"
+                  id="resolution_240"
+                  value="240"
+                />
+                240p
+              </label>
+              <label for="resolution_480">
+                <input
+                  type="radio"
+                  name="resolution"
+                  id="resolution_480"
+                  value="480"
+                />
+                480p
+              </label>
+              <label for="resolution_560">
+                <input
+                  type="radio"
+                  name="resolution"
+                  id="resolution_560"
+                  value="560"
+                />
+                560p
+              </label>
+              <label for="resolution_720">
+                <input
+                  type="radio"
+                  name="resolution"
+                  id="resolution_720"
+                  value="720"
+                />
+                720p
+              </label>
+              <label for="resolution_1080">
+                <input
+                  type="radio"
+                  name="resolution"
+                  id="resolution_1080"
+                  value="1080"
+                />
+                1080p
+              </label>
+            </label>
+            <div>
+              Will reload the page after choosing a different resolution
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Performance result</legend>
+
+          <div>
+            <label for="handle_duration"
+              >Duration to handle a frame
+              <span id='handle_duration'></span> milliseconds
+            </label>
+          </div>
+
+        </fieldset>
+
+        <fieldset id="resultWrapper">
+          <legend>Processed video</legend>
+        </fieldset>
+        <fieldset id="videoWrapper">
+          <legend>Original video</legend>
+        </fieldset>
+      </div>
+      <div id="video_app_wrap">
+        <h2>Video app's scope</h2>
+
+        <fieldset>
+          <legend>Iframe of video app</legend>
+          <iframe
+            id="ifrm"
+            src="https://localhost:8000/index.html"
+            frameborder="1"
+          ></iframe>
+        </fieldset>
+      </div>
+    </div>
+
+    <script src="./measure.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
