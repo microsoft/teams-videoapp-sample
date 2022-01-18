@@ -147,7 +147,7 @@
         const vertexShader = this._compileShader(vertexShaderSource, gl.VERTEX_SHADER);
         const fragmentShader = this._compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
 
-        const program = this.gl.createProgram();
+        const program = gl.createProgram();
         gl.attachShader(program, vertexShader);
         gl.attachShader(program, fragmentShader);
         gl.linkProgram(program);
@@ -168,7 +168,7 @@
             1, 1, 0, 1.0,  1.0,
          ]);
 
-         const gl = this.gl;
+        const gl = this.gl;
         const program = this.program;
         const verticeBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, verticeBuffer);
@@ -217,7 +217,7 @@
         const shader = gl.createShader(shaderType);
         gl.shaderSource(shader, shaderSource);
         gl.compileShader(shader);
-        const success = gl.getShaderParameter(shader, this.gl.COMPILE_STATUS);
+        const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
         if (!success) {
             const err = gl.getShaderInfoLog(shader);
             gl.deleteShader(shader);
