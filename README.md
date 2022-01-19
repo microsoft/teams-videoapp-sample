@@ -1,4 +1,4 @@
-# This repo demonstrate a minimal Teams video app.
+# This repo demonstrates a minimal Teams video app.
 
 ## Install the video app in Teams
 1. Host the app directory in a public accessible HTTPS server. You can use github page as the host.
@@ -9,14 +9,13 @@
 4. Go to a teams meeting, enable the video, and activate the video app.
 
 
-## Develop video app in browser
+## Develop video app in local
 
 1. open terminal
 2. `cd` to the directory of README.md
 3. run `yarn install`
-4. run `yarn start-app`
-5. run `yarn start-container`
-6. open `https://localhost:9000/index.html` in your browser
+4. run `yarn start-app`, this will host the app in locl environment.
+6. copy `https://localhost:8000/index.html` to test-app 'Video app url' input box and then click 'Load' button.
 7. change `videoFrameHandler` function in `app/index.js`
 
 ## Contributing

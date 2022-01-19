@@ -108,6 +108,7 @@
             vec3 yuv2r = vec3(1.164, 0.0, 1.596);
             vec3 yuv2g = vec3(1.164, -0.391, -0.813);
             vec3 yuv2b = vec3(1.164, 2.018, 0.0);
+
             vec3 nv12_to_rgb(vec2 texCoord) {
                 vec3 yuv; 
                 yuv.x = texture2D(u_samplerY, texCoord).r - 0.0625;
@@ -117,19 +118,11 @@
                 return rgb; 
             }
 
-            float V(vec3 c) {
-                float result = (0.439 * c.r) - (0.368 * c.g) - (0.071 * c.b) + 0.5;
-                return result;
-            }
-
-            float U(vec3 c) {
-                float result = -(0.148 * c.r) - (0.291 * c.g) + (0.439 * c.b) + 0.5;
-                return result; 
-            }
-
-            float Y(vec3 c) {
-                float result = (0.257 * c.r) + (0.504 * c.g) + (0.098 * c.b) + 0.0625;
-                return result;
+            vec4 rgba_to_nv12(vec3 rgb) {
+                float y = (0.257 * rgb.r) + (0.504 * rgb.g) + (0.098 * rgb.b) + 0.0625;
+                float u = -(0.148 * rgb.r) - (0.291 * rgb.g) + (0.439 * rgb.b) + 0.5;
+                float v = (0.439 * rgb.r) - (0.368 * rgb.g) - (0.071 * rgb.b) + 0.5;
+                return vec4(y, u, v, 1.0);
             }
 
             void main() {
@@ -139,7 +132,7 @@
                 gl_FragColor = vec4(luminance, luminance, luminance, 5);
 
                 // rgba to nv12
-                gl_FragColor = vec4(Y(gl_FragColor.rgb), U(gl_FragColor.rgb), V(gl_FragColor.rgb), 1);
+                gl_FragColor = rgba_to_nv12(gl_FragColor.rgb);
             }
         `;
         
