@@ -2,16 +2,41 @@
 
 ## Develop video app in local and debug it in test-app
 
-1. open terminal
+1. Clone this repo open terminal
 2. `cd` to the directory of README.md
 3. run `yarn install`
-4. run `yarn start-app`, this will host the app in locl environment.
-5. copy `https://localhost:8000/index.html` to test-app 'Video app url' input box and then click 'Load' button.
+4. run `yarn start-app`, this will host the app in locl environment or you can host the `app` folder on other place can access.
+5. copy `https://localhost:8000/index.html` or url if you host on the palce to test-app 'Video app url' input box and then click 'Load' button.
 6. change `videoFrameHandler` function in `app/index.js`
 
+
+## Teams Video API reference
+#### You can find the Teams video extensibility API [link](https://github.com/OfficeDev/microsoft-teams-library-js/blob/master/src/public/video.ts)
+
+### API reference
+There are three API for video extensibility
+```javascript
+registerForVideoFrame(frameCallback, config) 
+```
+#### Register a callback to get: 
+- video frames from video pipeline.
+- a callback to return processed video frames to video pipeline. 
+- a callback to notify error 
+
+```javascript
+registerForVideoEffect(callback)
+```
+- Get notification that the selected effect in video app’s UI should be applied
+```javascript
+ notifySelectedVideoEffectChanged(
+    effectChangeType,
+    effectId,
+  ) 
+  ```
+  - Whenever the user selects a different effect in a video app, the video app should call this API to notify Teams client. 
 ## How to use the test app?
 
-1. Ensure you are in Windows, and your computer has a camera. Use OBS virtual camera if you don't have a camera.
+1. Test-app was used to develop/verify video app, you can find the test-app under the `test-app` folder, copy and unzip to other folder. Ensure you are in Windows, and your computer has a camera. Use OBS virtual camera if you don't have a camera.
 2. After the application is opened, select a camera device in the 'Camera' drop down.
 3. Input your video app's url. Deploying the video app in https server is preferred.
 4. Click `Load video app`. The example video app will be loaded if the `Video app url` is blank.
@@ -52,7 +77,7 @@ After saving the persistent.conf, restart the test-app, it should grab video fra
  
 The RtmCodecsConfig key-value will be removed every time restarting the test-app, it's expected. But the resolution will be remembered in the test-app future running.
 
-## There's no device shown in the first dropdown.
+## There's no device shown in the 'Camera' dropdown.
 
 1. Make sure your camera has been plugged into your computer.
 2. Delete `%appdata%\Microsoft\electron` folder.
@@ -63,6 +88,7 @@ The RtmCodecsConfig key-value will be removed every time restarting the test-app
     2. appId can be any unique GUID
 3. zip the meta directory, choose the zip file after clicking Upload a custom app
 4. Go to a teams meeting, enable the video, and activate the video app.
+5. You can get more information on [Video app developer guide](https://github.com/microsoft/teams-videoapp-sample/wiki/Teams-Video-App-Developer-Guide)
 
 
 ## Contributing
