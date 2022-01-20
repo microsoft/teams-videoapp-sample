@@ -6,7 +6,7 @@
   "id": "b15f97b7-1f9b-4bb7-ac9f-efddf27aae7b",
   "packageName": "com.microsoft.teams.videopp",
   "developer": {
-    "name": "Bo Lu",
+    "name": "Microsoft",
     "websiteUrl": "https://microsoft.github.io/teams-videoapp-sample/",
     "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement/",
     "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement/"
@@ -48,6 +48,11 @@
         "id": "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949",
         "name": "half",
         "thumbnail": "half.png"
+      },
+      {
+        "id": "6a3b572d-8284-42d5-91c5-4b0735989a7d",
+        "name": "gray scale",
+        "thumbnail": "gray.png"
       }
     ],
     "videoAppContentUrl": "https://microsoft.github.io/teams-videoapp-sample/app/"
