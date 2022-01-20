@@ -8,6 +8,7 @@
 4. run `yarn start-app`, this will host the app in locl environment or you can host the `app` folder on other place can access.
 5. copy `https://localhost:8000/index.html` or url if you host on the palce to test-app 'Video app url' input box and then click 'Load' button.
 6. change `videoFrameHandler` function in `app/index.js`
+7. This sample processes the video frame in main thread for simplicity, you can move the frame processing to worker thread if needed.
 
 
 ## Teams Video API reference
