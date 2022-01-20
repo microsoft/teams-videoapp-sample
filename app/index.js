@@ -9,8 +9,8 @@ let appliedEffect = {
 };
 
 let effectIds = {
-  half: "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949",
-  gray: "6a3b572d-8284-42d5-91c5-4b0735989a7d",
+  half: "c2cf81fd-a1c0-4742-b41a-ef969b3ed490",
+  gray: "b0c8896c-7be8-4645-ae02-a8bc9b0355e5",
 }
 
 // This is the effect linked with UI
@@ -34,7 +34,6 @@ let videoFilter = new WebglVideoFilter(canvas);
 videoFilter.init();
 //Sample video effect
 function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
-
   switch (selectedEffectId) {
     case effectIds.half:
       simpleHalfEffect(videoFrame);
