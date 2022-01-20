@@ -83,10 +83,10 @@ The RtmCodecsConfig key-value will be removed every time restarting the test-app
 2. Delete `%appdata%\Microsoft\electron` folder.
 ## Install the video app in Teams
 1. Host the app directory in a public accessible HTTPS server. You can use github page as the host.
-2. Replace the `name`, `appId`, and `contentUrl` in `meta/manifest.json`.
+2. Replace the `name`, `appId`, and `contentUrl` in `manifest/manifest.json`.
     1. The contentUrl should point to your app directory, like `https://github.com/microsoft/teams-videoapp-sample/app/`
     2. appId can be any unique GUID
-3. zip the meta directory, choose the zip file after clicking Upload a custom app
+3. zip the manifest directory, choose the zip file after clicking Upload a custom app
 4. Go to a teams meeting, enable the video, and activate the video app.
 5. You can get more information on [Video app developer guide](https://github.com/microsoft/teams-videoapp-sample/wiki/Teams-Video-App-Developer-Guide)
 
