@@ -50,9 +50,9 @@ function effectParameterChanged(effectId) {
     //todo If effectName is undefined, need to clear the effect selected status.
 
   } else {
-      if (effectId === "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949") {
+      if (effectId === "c2cf81fd-a1c0-4742-b41a-ef969b3ed490") {
         useSimpleEffect = true;
-      } else if (effectId === "6a3b572d-8284-42d5-91c5-4b0735989a7d") {
+      } else if (effectId === "b0c8896c-7be8-4645-ae02-a8bc9b0355e5") {
         useSimpleEffect = false;
       }
     }
