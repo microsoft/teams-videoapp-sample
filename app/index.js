@@ -8,8 +8,14 @@ let appliedEffect = {
   proportion: 3,
 };
 
+let effectIds = {
+  half: "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949",
+  gray: "6a3b572d-8284-42d5-91c5-4b0735989a7d",
+}
+
 // This is the effect linked with UI
 let uiSelectedEffect = {};
+let selectedEffectId = undefined;
 let errorOccurs = false;
 let useSimpleEffect = false;
 function simpleHalfEffect(videoFrame) {
@@ -29,10 +35,15 @@ videoFilter.init();
 //Sample video effect
 function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
 
-  if (useSimpleEffect) {
-    simpleHalfEffect(videoFrame);
-  } else {
-    videoFilter.processVideoFrame(videoFrame);
+  switch (selectedEffectId) {
+    case effectIds.half:
+      simpleHalfEffect(videoFrame);
+      break;
+    case effectIds.gray:
+      videoFilter.processVideoFrame(videoFrame);
+      break;
+    default:
+      break;
   }
  
   //send notification the effect processing is finshed.
@@ -44,19 +55,34 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
   // }
 }
 
+function clearSelect() {
+  document.getElementById("filter-half").classList.remove("selected");
+  document.getElementById("filter-gray").classList.remove("selected");
+}
+
 function effectParameterChanged(effectId) {
   console.log(effectId);
-  if (effectId === undefined) {
-    //todo If effectName is undefined, need to clear the effect selected status.
-
-  } else {
-      if (effectId === "f36d7f68-7c71-41f5-8fd9-ebf0ae38f949") {
-        useSimpleEffect = true;
-      } else if (effectId === "6a3b572d-8284-42d5-91c5-4b0735989a7d") {
-        useSimpleEffect = false;
-      }
-    }
+  if (selectedEffectId === effectId) {
+    console.log('effect not changed');
+    return;
   }
+  selectedEffectId = effectId;
+
+  clearSelect();
+  switch (selectedEffectId) {
+    case effectIds.half:
+      console.log('current effect: half');
+      document.getElementById("filter-half").classList.add("selected");
+      break;
+    case effectIds.gray:
+      console.log('current effect: gray');
+      document.getElementById("filter-gray").classList.add("selected");
+      break;
+    default:
+      console.log('effect cleared');
+      break;
+  }
+}
 
 microsoftTeams.appInitialization.notifySuccess();
 microsoftTeams.video.registerForVideoEffect(effectParameterChanged);
@@ -65,18 +91,17 @@ microsoftTeams.video.registerForVideoFrame(videoFrameHandler, {
 });
 
 // any changes to the UI should notify Teams client.
-document.getElementById("enable_check").addEventListener("change", function () {
-  if (this.checked) {
-    microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged");
-  } else {
-    microsoftTeams.video.notifySelectedVideoEffectChanged("EffectDisabled");
+const filterHalf = document.getElementById("filter-half");
+filterHalf.addEventListener("click", function () {
+  if (selectedEffectId === effectIds.half) {
+    return;
   }
+  microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged", effectIds.half);
 });
-document.getElementById("proportion").addEventListener("change", function () {
-  uiSelectedEffect.proportion = this.value;
-  microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged");
-});
-document.getElementById("pixel_value").addEventListener("change", function () {
-  uiSelectedEffect.pixelValue = this.value;
-  microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged");
+const filterGray = document.getElementById("filter-gray");
+filterGray.addEventListener("click", function () {
+  if (selectedEffectId === effectIds.gray) {
+    return;
+  }
+  microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged", effectIds.gray);
 });
