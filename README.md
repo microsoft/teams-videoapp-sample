@@ -2,11 +2,11 @@
 
 ## Develop video app in local and debug it in test-app
 
-1. Clone this repo open terminal
-2. `cd` to the directory of README.md
-3. run `yarn install`
-4. run `yarn start-app`, this will host the app in locl environment or you can host the `app` folder on other place can access.
-5. copy `https://localhost:8000/index.html` or url if you host on the palce to test-app 'Video app url' input box and then click 'Load' button.
+1. Clone this repo  and open terminal.
+2. `cd` to the directory of README.md.
+3. run `yarn install`.
+4. run `yarn start-app`, this will host the app in local environment or you can host the `app` folder on other place can access.
+5. copy `https://localhost:8000/index.html` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
 6. change `videoFrameHandler` function in `app/index.js`
 7. This sample processes the video frame in main thread for simplicity, you can move the frame processing to worker thread if needed.
 
@@ -39,8 +39,8 @@ registerForVideoEffect(callback)
 
 1. Test-app was used to develop/verify video app, you can find the test-app under the `test-app` folder, copy and unzip to other folder. Ensure you are in Windows, and your computer has a camera. Use OBS virtual camera if you don't have a camera.
 2. After the application is opened, select a camera device in the 'Camera' drop down.
-3. Input your video app's url. Deploying the video app in https server is preferred.
-4. Click `Load video app`. The example video app will be loaded if the `Video app url` is blank.
+3. Input your video app's URL. Deploying the video app in https server is preferred.
+4. Click `Load video app`. The sample video app will be loaded if the `Video app url` is blank.
 
 ## How to test performance?
 
@@ -56,8 +56,8 @@ registerForVideoEffect(callback)
 
 ## How to change to your own video app?
 
-1. Click `Destroy video app` if you have already loaded the example video app.
-2. Input your video app's url.
+1. Click `Destroy video app` if you have already loaded the sample video app.
+2. Input your video app's URL.
 3. Click `Load video app`.
 
 ## How to change camera resolution?
