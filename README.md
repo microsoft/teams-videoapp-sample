@@ -4,17 +4,17 @@
 1. Clone this repo  and open terminal.
 2. `cd` to the directory of README.md.
 3. run `yarn install`.
-4. Install new certificate for https service.Refer to the next paragraph.
+4. Install new certificate for https service. Refer to the next paragraph.
 5. run `yarn start-app`, this will host the app in local environment or you can host the `app` folder on other place can access.
 6. copy `https://localhost:8000/index.html` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
 7. change `videoFrameHandler` function in `app/index.js`
 8. This sample processes the video frame in main thread for simplicity, you can move the frame processing to worker thread if needed.
 
 ## Install new certificate for https service
-1. Install `mkcert`.Refer to mkcert repository.[link](https://github.com/FiloSottile/mkcert)
-2. cd `teams-videoapp-sample/cert`.
-3. (As administrator)run `mkcert -cert-file cert.pem -key-file key.pem localhost` .
-4. (As administrator)run `mkcert -install`.
+1. Install `mkcert`. Refer to mkcert repository [link](https://github.com/FiloSottile/mkcert).
+2. Cd `teams-videoapp-sample/cert`.
+3. (As administrator) Run `mkcert -cert-file cert.pem -key-file key.pem localhost`.
+4. (As administrator) Run `mkcert -install`.
 5. Test if the certificate is installed correctly.
 
 ## Teams Video API reference
@@ -48,7 +48,7 @@ registerForVideoEffect(callback)
 3. After the application is opened, select a camera device in the 'Camera' drop down.
 4. Input your video app's URL. Deploying the video app in https server is preferred.
 5. Click `Load video app`. The sample video app will be loaded if the `Video app url` is blank.
-6. If the url mentioned above is blank , then the "video-app" loaded in test-app is not actually the "video-app" that you run with the command `yarn start-app` ,so it is recommended to fill in the blank with your local url.
+6. If the url mentioned above is blank, then the "video-app" loaded in test-app is not actually the "video-app" that you run with the command `yarn start-app`, so it is recommended to fill in the blank with your local url.
 
 ## How to test performance?
 
@@ -102,14 +102,14 @@ microsoftTeams.initialize(() => {}, [
 
 ## Install the video app in Teams
 1. Host the app directory in a public accessible HTTPS server. You can use github page as the host.
-2. If you choose to host it with github, then it is recommended to fork the repo of videoapp-sample and modify this video-app within your repository.
-3. After forked this repository, enter your videoapp-sample repository, set your repository follow `Settings->Pages->choose a branch->Save->wait for url` ,after published the project, copy the link provided by "Github Pages" and try to visit the website in your browser, if success, copy the link into `contentUrl`.
+2. If you choose to host it with github, then it is recommended to fork the repo of teams-videoapp-sample and modify this video app within your repository.
+3. After forked this repository, enter your teams-videoapp-sample repository, set your repository follow `Settings->Pages->choose a branch->Save->wait for url`, after published the project, copy the link provided by "Github Pages" and try to visit the website in your browser, if success, copy the link into `contentUrl`.
 4. Replace the `name`, `appId`, and `contentUrl` in `manifest/manifest.json`.
-    1. The contentUrl should point to your app directory, like `https://microsoft.github.io/teams-videoapp-sample/app/`
-    2. appId can be any unique GUID.(Search  `generate guid` in your browser )
+    1. The contentUrl should point to your app directory, like `https://microsoft.github.io/teams-videoapp-sample/app/`.
+    2. AppId can be any unique GUID. (Search `generate guid` in your browser. )
     3. Manifest.json should refer to latest manifest schema.
 
-5. zip the manifest directory, choose the zip file after clicking Upload a custom app
+5. zip the manifest directory, choose the zip file after clicking Upload a custom app.
 6. Go to a teams meeting, enable the video, and activate the video app.
 7. You can get more information on [Video app developer guide](https://github.com/microsoft/teams-videoapp-sample/wiki/Teams-Video-App-Developer-Guide)
 
