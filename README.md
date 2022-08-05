@@ -37,11 +37,11 @@ registerForVideoEffect(callback)
   - Whenever the user selects a different effect in a video app, the video app should call this API to notify Teams client. 
 ## How to use the test app?
 
-1. Make sure `"https://microsoft.github.io"` is included when calling `microsoftTeams.initialize()` in video app
-2. Test-app was used to develop/verify video app, you can find the test-app under the `test-app` folder, copy and unzip to other folder. Ensure you are in Windows, and your computer has a camera. Use OBS virtual camera if you don't have a camera.
-3. After the application is opened, select a camera device in the 'Camera' drop down.
-4. Input your video app's URL. Deploying the video app in https server is preferred.
-5. Click `Load video app`. The sample video app will be loaded if the `Video app url` is blank.
+
+1. Test-app was used to develop/verify video app, you can find the test-app under the `test-app` folder, copy and unzip to other folder. Ensure you are in Windows, and your computer has a camera. Use OBS virtual camera if you don't have a camera.
+1. After the application is opened, select a camera device in the 'Camera' drop down.
+1. Input your video app's URL. Deploying the video app in https server is preferred.
+1. Click `Load video app`. The sample video app will be loaded if the `Video app url` is blank.
 
 ## How to test performance?
 
@@ -83,15 +83,6 @@ The RtmCodecsConfig key-value will be removed every time restarting the test-app
 
 1. Make sure your camera has been plugged into your computer.
 2. Delete `%appdata%\Microsoft\electron` folder.
-
-## Video effect cannot be applied.
-1. Make sure `"https://microsoft.github.io"` is included when calling `microsoftTeams.initialize()`, e.g.
-
-```javascript
-microsoftTeams.initialize(() => {}, [
-  "https://microsoft.github.io",
-]);
-```
 
 ## Install the video app in Teams
 1. Host the app directory in a public accessible HTTPS server. You can use github page as the host.
