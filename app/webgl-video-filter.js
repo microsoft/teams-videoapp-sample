@@ -198,11 +198,11 @@
         const gl = this.gl;
         const program = this.program;
         this.textureY = this._createTexture();
-        gl.uniform1i(gl.getUniformLocation(program, 'u_textureY'), 0);
+        gl.uniform1i(gl.getUniformLocation(program, 'u_samplerY'), 0);
 
         gl.activeTexture(gl.TEXTURE1);
         this.textureUV = this._createTexture();
-        gl.uniform1i(gl.getUniformLocation(program, 'u_textureUV'), 1);
+        gl.uniform1i(gl.getUniformLocation(program, 'u_samplerUV'), 1);
     }
 
     _compileShader(shaderSource, shaderType) {
