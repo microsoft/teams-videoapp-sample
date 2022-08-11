@@ -5,9 +5,9 @@
 1. Clone this repo  and open terminal.
 2. `cd` to the directory of README.md.
 3. run `yarn install`.
-4. run `yarn start-app`, this will host the app in local environment or you can host the `app` folder on other place can access.
-5. copy `https://localhost:8000/index.html` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
-6. change `videoFrameHandler` function in `app/index.js`
+4. run `yarn start-app`, this will host the app in local environment or you can host the `src` folder on other place can access.
+5. copy `https://127.0.0.1:5173/` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
+6. change `videoFrameHandler` function in `src/index.js`
 7. This sample processes the video frame in main thread for simplicity, you can move the frame processing to worker thread if needed.
 
 
