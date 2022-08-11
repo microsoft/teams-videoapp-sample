@@ -4,10 +4,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start-app": "node server.js ./app 8000",
-    "start-container": "node server.js ./container 9000",
-    "build": "cd sdk && yarn build && cd .. && yarn copysdk",
-    "copysdk": "./node_modules/.bin/copyfiles ./sdk/dist/* ./app"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": {
@@ -15,7 +14,11 @@
     "email": "bolu1@microsoft.com"
   },
   "license": "MIT",
+  "devDependencies": {
+    "vite": "^3.0.0"
+  },
   "dependencies": {
-    "copyfiles": "^2.4.1"
+    "@microsoft/teams-js": "^2.2.0",
+    "vite-plugin-mkcert": "^1.9.0"
   }
 }
