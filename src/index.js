@@ -1,5 +1,8 @@
-microsoftTeams.initialize(() => {});
+import { app, video } from "@microsoft/teams-js";
 
+import { WebglVideoFilter } from "./webgl-video-filter";
+
+app.initialize().then(() => {
 // This is the effect for processing
 let appliedEffect = {
   pixelValue: 100,
@@ -19,7 +22,7 @@ let useSimpleEffect = false;
 function simpleHalfEffect(videoFrame) {
   const maxLen =
     (videoFrame.height * videoFrame.width) /
-    Math.max(1, appliedEffect.proportion) - 4;
+      Math.max(1, appliedEffect.proportion) - 4;
 
   for (let i = 1; i < maxLen; i += 4) {
     //smaple effect just change the value to 100, which effect some pixel value of video frame
@@ -42,10 +45,10 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
     default:
       break;
   }
- 
+
   //send notification the effect processing is finshed.
   notifyVideoProcessed();
-  
+
   //send error to Teams if any
   // if (errorOccurs) {
   //   notifyError("some error message");
@@ -81,9 +84,8 @@ function effectParameterChanged(effectId) {
   }
 }
 
-microsoftTeams.appInitialization.notifySuccess();
-microsoftTeams.video.registerForVideoEffect(effectParameterChanged);
-microsoftTeams.video.registerForVideoFrame(videoFrameHandler, {
+video.registerForVideoEffect(effectParameterChanged);
+video.registerForVideoFrame(videoFrameHandler, {
   format: "NV12",
 });
 
@@ -93,12 +95,13 @@ filterHalf.addEventListener("click", function () {
   if (selectedEffectId === effectIds.half) {
     return;
   }
-  microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged", effectIds.half);
+  video.notifySelectedVideoEffectChanged("EffectChanged", effectIds.half);
 });
 const filterGray = document.getElementById("filter-gray");
 filterGray.addEventListener("click", function () {
   if (selectedEffectId === effectIds.gray) {
     return;
   }
-  microsoftTeams.video.notifySelectedVideoEffectChanged("EffectChanged", effectIds.gray);
+  video.notifySelectedVideoEffectChanged("EffectChanged", effectIds.gray);
+});
 });

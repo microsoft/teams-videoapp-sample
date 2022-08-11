@@ -1,21 +1,18 @@
 {
-  "name": "teams-videoapp-sample",
-  "productName": "Teams VideoApp sample",
-  "version": "1.0.0",
-  "description": "",
+  "name": "tmp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start-app": "node server.js ./app 8000",
-    "start-container": "node server.js ./container 9000",
-    "build": "cd sdk && yarn build && cd .. && yarn copysdk",
-    "copysdk": "./node_modules/.bin/copyfiles ./sdk/dist/* ./app"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": {
-    "name": "Bo Lu",
-    "email": "bolu1@microsoft.com"
+  "devDependencies": {
+    "vite": "^3.0.0"
   },
-  "license": "MIT",
   "dependencies": {
-    "copyfiles": "^2.4.1"
+    "@microsoft/teams-js": "^2.2.0",
+    "vite-plugin-mkcert": "^1.9.0"
   }
 }
