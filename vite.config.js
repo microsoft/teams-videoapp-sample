@@ -1,6 +1,6 @@
 import mkcert from 'vite-plugin-mkcert'
 export default {
-    base: '/teams-videoapp-sample/',
+    base: '/teams-videoapp-sample/app/',
     build: {
         outDir: './dist/app'
     },
