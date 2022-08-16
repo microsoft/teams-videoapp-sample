@@ -29,3 +29,5 @@ jobs:
       with:
         path: dist/
     - uses: actions/deploy-pages@v1.0.8
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
