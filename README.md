@@ -12,7 +12,7 @@
 
 
 ## Teams Video API reference
-#### You can find the Teams video extensibility API [link](https://github.com/OfficeDev/microsoft-teams-library-js/blob/master/src/public/video.ts)
+#### You can find the Teams video extensibility API [link](https://github.com/OfficeDev/microsoft-teams-library-js/blob/main/packages/teams-js/src/public/video.ts)
 
 ### API reference
 There are three API for video extensibility
