@@ -38,7 +38,7 @@ If you want to add your own video effects:
 ## Teams Video API reference
 
 If you want to know details about how video app interacts with Teams SDK API:
-#### You can find the Teams video extensibility API [link](https://github.com/OfficeDev/microsoft-teams-library-js/blob/master/src/public/video.ts)
+#### You can find the Teams video extensibility API [link](https://github.com/OfficeDev/microsoft-teams-library-js/blob/main/packages/teams-js/src/public/video.ts)
 
 ### API reference
 There are three API for video extensibility
