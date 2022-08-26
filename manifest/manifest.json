@@ -24,8 +24,8 @@
   },
   "accentColor": "#FFFFFF",
   "devicePermissions": [
-		"media"
-	],
+    "media"
+  ],
   "authorization": {
     "permissions": {
       "resourceSpecific": [
@@ -48,12 +48,12 @@
     "filters": [
       {
         "id": "c2cf81fd-a1c0-4742-b41a-ef969b3ed490",
-        "name": "half",
+        "name": "Others_half",
         "thumbnail": "half.png"
       },
       {
         "id": "b0c8896c-7be8-4645-ae02-a8bc9b0355e5",
-        "name": "gray scale",
+        "name": "Others_gray scale",
         "thumbnail": "gray.png"
       }
     ],
