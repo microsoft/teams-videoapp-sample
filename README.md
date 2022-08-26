@@ -1,17 +1,43 @@
 # This repo demonstrates a minimal Teams video app.
+This repo contains:
+1. A minimal sample app with basic video processing capabilities.
+2. A test app can be used to test video app functionality in early development stage and provides performance evaluation tools.
 
-## Develop video app in local and debug it in test-app
+The following steps shows how to create a video app on your own based on this sample, and how to improve it so that it can implement all kinds of video effects you want.
 
-1. Clone this repo  and open terminal.
+## Prerequisites
+
+1. Install git on your machine following this [instructions](https://github.com/git-guides/install-git)
+2. Install Node. [Node.js](https://nodejs.org/en/).
+3. Install [Yarn](https://yarnpkg.com/en/)
+
+## Dowmload and start video app in local
+
+1. `git clone https://github.com/microsoft/teams-videoapp-sample.git`
 2. `cd` to the directory of README.md.
 3. run `yarn install`.
 4. run `yarn dev`, this will host the app in local environment or you can host the `src` folder on other place can access.
-5. copy `https://127.0.0.1:5173/` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
-6. change `videoFrameHandler` function in `src/index.js`
-7. This sample processes the video frame in main thread for simplicity, you can move the frame processing to worker thread if needed.
+5. The app will be hosted in `https://127.0.0.1:5173/`.
 
+## Load and test sample video app in local using test app
+
+1. go to `test-app` folder and unzip the latest test app according to your enviornment.
+2. Open the `.exe` file under the root folder.
+3. copy `https://127.0.0.1:5173/` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
+4. Then it will show sample video app page in the right panel of test app.
+5. Click on the video effect thumbnail, it will apply the corresponding effect to the video frame showing at left side of test app. 
+
+## Develop your own video effects
+
+If you want to add your own video effects:
+1. Add your `effectId` and corresponding handler in `videoFrameHandler` function in `src/index.js`
+2. Add thumbnail for your newly added effect in `index.html`.
+3. Bind the newly added handler function you created in `src/index.js` with the newly added thubnail in `index.html` as it's `onClick` callback function.
+2. This sample video app processes the video frame in main thread for simplicity, you can move the frame processing to worker thread to improve performance if needed.
 
 ## Teams Video API reference
+
+If you want to know details about how video app interacts with Teams SDK API:
 #### You can find the Teams video extensibility API [link](https://github.com/OfficeDev/microsoft-teams-library-js/blob/main/packages/teams-js/src/public/video.ts)
 
 ### API reference
@@ -36,16 +62,21 @@ registerForVideoEffect(callback)
   ```
   - Whenever the user selects a different effect in a video app, the video app should call this API to notify Teams client. 
 
+## How to test performance in test app?
 
-## Sideload the video app in Teams
-1. Host the app directory in a public accessible HTTPS server. You can use github page as the host.
-2. Replace the `name`, `appId`, and `contentUrl` in `manifest/manifest.json`.
-    1. The contentUrl should point to your app directory, like `https://github.com/microsoft/teams-videoapp-sample/app/`
-    2. appId can be any unique GUID
-3. zip the manifest directory, choose the zip file after clicking Upload a custom app
-4. Go to a teams meeting, enable the video, and activate the video app.
-5. You can get more information on [Video app developer guide](https://github.com/microsoft/teams-videoapp-sample/wiki/Teams-Video-App-Developer-Guide)
+1. Load video app in test app.
+2. To evaluate processing time, click `Real-time Evaluation` or `Full Evaluation` under `Time per Frame`. 
+    - `Real-time Evaluation` logs the average and range of processing time in millisecond in each second.
+    - `Full Evaluation` logs both the processing time and the distribution of processing time.
+3. To evaluate memory usage, click `Real-time Evaluation` or `Full Evaluation` under `Memory Usage'. 
+    - `Real-time Evaluation` logs the average and range of both active heap size and total heap size for each frame.
+    - `Full Evaluation` logs both the heap size and the distribution of heap size.
+4. To test video app under different resolutions, click `Reduce the resolution by half`, `Same`, or `Double the resolution`. 
 
+## FAQ: There's no device shown in the 'Camera' dropdown.
+
+1. Make sure your camera has been plugged into your computer.
+2. Delete `%appdata%\Microsoft\electron` folder.
 
 ## Contributing
 
