@@ -23,9 +23,6 @@
     "full": "This repo demonstrate a minimal Teams video app, clone this repo and change the video frame processing function"
   },
   "accentColor": "#FFFFFF",
-  "devicePermissions": [
-    "media"
-  ],
   "authorization": {
     "permissions": {
       "resourceSpecific": [
@@ -45,7 +42,7 @@
     "defaultLanguageTag": "en-us"
   },
   "meetingExtensionDefinition": {
-    "filters": [
+    "videoFilters": [
       {
         "id": "c2cf81fd-a1c0-4742-b41a-ef969b3ed490",
         "name": "Others_half",
@@ -57,6 +54,6 @@
         "thumbnail": "gray.png"
       }
     ],
-    "videoAppContentUrl": "https://microsoft.github.io/teams-videoapp-sample/app/"
+    "videoFiltersConfigurationUrl": "https://microsoft.github.io/teams-videoapp-sample/app/"
   }
 }
