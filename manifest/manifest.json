@@ -23,9 +23,6 @@
     "full": "This repo demonstrate a minimal Teams video app, clone this repo and change the video frame processing function"
   },
   "accentColor": "#FFFFFF",
-  "devicePermissions": [
-    "media"
-  ],
   "authorization": {
     "permissions": {
       "resourceSpecific": [
