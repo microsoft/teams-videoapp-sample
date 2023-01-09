@@ -55,6 +55,55 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
   // }
 }
 
+async function videoFrameHandlerV2(receivedVideoFrame) {
+  try{
+    if (selectedEffectId !== effectIds.half) {
+      return Promise.resolve(receivedVideoFrame.frame);
+    }
+    const frame = receivedVideoFrame.frame;
+    const buffer = new ArrayBuffer(frame.allocationSize());
+    await frame.copyTo(buffer);
+    const data = new Uint8ClampedArray(buffer);
+    const maxLen =
+      (frame.codedHeight * frame.codedWidth) /
+        Math.max(1, appliedEffect.proportion) - 4;
+  
+    for (let i = 1; i < maxLen; i += 4) {
+      //smaple effect just change the value to 100, which effect some pixel value of video frame
+      data[i + 1] = appliedEffect.pixelValue;
+    }
+    const processedFrame = new VideoFrame(data.buffer, {
+      timestamp: frame.timestamp,
+      format: frame.format,
+      codedHeight: frame.codedHeight,
+      codedWidth: frame.codedWidth,
+      // frame.colorSpace might be null
+      //colorSpace: frame.colorSpace,
+    });
+    return processedFrame;
+  }catch(e){
+    console.log(`debug: error occurs: ${e}`);
+  }
+  
+
+  // if (!ctx) {
+  //   console.log('simpleHalfEffect: ctx is null');
+  //   return frame;
+  // }
+  // const width = frame.codedWidth;
+  // const height = frame.codedHeight;
+  // canvas.width = width;
+  // canvas.height = height;
+  // const timestamp = frame.timestamp || undefined;
+  // ctx?.drawImage(frame, 0, 0);
+  // ctx.shadowColor = '#000';
+  // ctx.shadowBlur = 20;
+  // ctx.lineWidth = 50;
+  // ctx.strokeStyle = '#000';
+  // ctx.strokeRect(0, 0, width, height);
+  // return Promise.resolve(new VideoFrame(canvas, { timestamp }));
+}
+
 function clearSelect() {
   document.getElementById("filter-half").classList.remove("selected");
   document.getElementById("filter-gray").classList.remove("selected");
@@ -85,7 +134,11 @@ function effectParameterChanged(effectId) {
 }
 
 video.registerForVideoEffect(effectParameterChanged);
-video.registerForVideoFrame(videoFrameHandler, {
+// video.registerForVideoFrame(videoFrameHandler, {
+//   format: "NV12",
+// });
+
+video.registerForVideoFrameV2(videoFrameHandlerV2, {
   format: "NV12",
 });
 
