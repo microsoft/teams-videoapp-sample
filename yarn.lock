@@ -115,6 +115,18 @@
   dependencies:
     "@octokit/openapi-types" "^13.0.0"
 
+"@types/dom-mediacapture-transform@^0.1.4":
+  version "0.1.4"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@types/dom-mediacapture-transform/-/dom-mediacapture-transform-0.1.4.tgz#f77c1b469f4c33513219dbca46201cf5bf0d082f"
+  integrity sha1-93wbRp9MM1EyGdvKRiAc9b8NCC8=
+  dependencies:
+    "@types/dom-webcodecs" "*"
+
+"@types/dom-webcodecs@*":
+  version "0.1.5"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@types/dom-webcodecs/-/dom-webcodecs-0.1.5.tgz#2252fdb4a3229924d27f054242cc614e2cd5b83b"
+  integrity sha1-IlL9tKMimSTSfwVCQsxhTizVuDs=
+
 axios@^0.21.4:
   version "0.21.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
