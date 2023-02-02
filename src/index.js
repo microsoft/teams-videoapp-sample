@@ -14,12 +14,38 @@ let effectIds = {
   gray: "b0c8896c-7be8-4645-ae02-a8bc9b0355e5",
 }
 
+let start = 0;
+let frameStart = 0;
+let timeUsed = 0;
+let frameCount = 0;
+function startProcessingAFrame() {
+  const now = Date.now();
+  frameStart = now;
+  if (start === 0) {
+    start = now;
+  }
+}
+
+function stopProcessingAFrame(){
+  frameCount++;
+    const now = Date.now();
+    timeUsed += now - frameStart;
+    const timePast = now - start;
+    if (timePast > 60000) {
+      console.log(`half effect time per frame: timeUsed/frameCount = ${timeUsed / frameCount}`);
+      start = 0;
+      frameCount = 0;
+      timeUsed = 0;
+    }
+}
+
 // This is the effect linked with UI
 let uiSelectedEffect = {};
-let selectedEffectId = undefined;
+let selectedEffectId = 'c2cf81fd-a1c0-4742-b41a-ef969b3ed490';
 let errorOccurs = false;
 let useSimpleEffect = false;
 function simpleHalfEffect(videoFrame) {
+  startProcessingAFrame();
   const maxLen =
     (videoFrame.height * videoFrame.width) /
       Math.max(1, appliedEffect.proportion) - 4;
@@ -28,6 +54,7 @@ function simpleHalfEffect(videoFrame) {
     //smaple effect just change the value to 100, which effect some pixel value of video frame
     videoFrame.data[i + 1] = appliedEffect.pixelValue;
   }
+  stopProcessingAFrame();
 }
 
 let canvas = new OffscreenCanvas(480,360);
@@ -43,6 +70,7 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
       videoFilter.processVideoFrame(videoFrame);
       break;
     default:
+      simpleHalfEffect(videoFrame);
       break;
   }
 
@@ -56,6 +84,7 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
 }
 
 async function videoFrameHandlerV2(receivedVideoFrame) {
+  startProcessingAFrame();
   try{
     if (selectedEffectId !== effectIds.half) {
       return Promise.resolve(receivedVideoFrame.frame);
@@ -80,6 +109,7 @@ async function videoFrameHandlerV2(receivedVideoFrame) {
       // frame.colorSpace might be null
       //colorSpace: frame.colorSpace,
     });
+    stopProcessingAFrame();
     return processedFrame;
   }catch(e){
     console.log(`debug: error occurs: ${e}`);
@@ -134,6 +164,7 @@ function effectParameterChanged(effectId) {
 }
 
 video.registerForVideoEffect(effectParameterChanged);
+
 // video.registerForVideoFrame(videoFrameHandler, {
 //   format: "NV12",
 // });

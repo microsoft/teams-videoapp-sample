@@ -11,7 +11,8 @@ const render = async (track) => {
         if (result.done)
           break;
         let frame = result.value;
-        ctx.drawImage(frame, 0, 0, 480, 360);
+        //ctx.drawImage(frame, 0, 0, 480, 360);
+        ctx.drawImage(frame, 0, 0);
         frame.close();
     }
     // const processedStream = new MediaStream();
@@ -31,11 +32,11 @@ const render = async (track) => {
 // document.body.appendChild(video);
 // video.srcObject = processedStream;
 
-window.chrome.webview =  {
-    getTextureStream: () => Promise.resolve(
-        document.getElementById('streamSource')
-        .captureStream()),
-    registerTextureStream: (streamId, track) => {
-        render(track);
-    }
-}
+// window.chrome.webview =  {
+//     getTextureStream: () => Promise.resolve(
+//         document.getElementById('streamSource')
+//         .captureStream()),
+//     registerTextureStream: (streamId, track) => {
+//         render(track);
+//     }
+// }
