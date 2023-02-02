@@ -1,13 +1,21 @@
-import mkcert from 'vite-plugin-mkcert'
+import mkcert from "vite-plugin-mkcert";
+import path from "node:path";
+import { splitVendorChunkPlugin } from "vite";
 export default {
-    base: '/teams-videoapp-sample/app/',
-    build: {
-        outDir: './dist/app'
+  base: "/t2.1/",
+  build: {
+    outDir: "./dist",
+  },
+  resolve: {
+    alias: {
+      "@microsoft/teams-js": path.resolve(
+        __dirname,
+        "node_modules/@microsoft/teams-js/dist/MicrosoftTeams.js"
+      ),
     },
-    plugins: [
-        mkcert()
-    ],
-    server: {
-        https: true
-    }
-}
+  },
+  plugins: [mkcert(), splitVendorChunkPlugin()],
+  server: {
+    https: true,
+  },
+};

@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
   "manifestVersion": "devPreview",
   "version": "1.0.0",
-  "id": "32cdab16-7c7c-40bc-94ac-c764e91d85a6",
+  "id": "32cdab16-7c7c-40bc-94ac-c764e91d85a3",
   "packageName": "com.microsoft.teams.videopp",
   "developer": {
     "name": "Microsoft",
@@ -15,8 +15,8 @@
     "outline": "icon-outline.png"
   },
   "name": {
-    "short": "Teams VideoApp sample",
-    "full": "Teams VideoApp sample"
+    "short": "Teams VideoApp sample (T2.1)",
+    "full": "Teams VideoApp sample (T2.1)"
   },
   "description": {
     "short": "This repo demonstrate a minimal Teams video app.",
@@ -37,23 +37,23 @@
       ]
     }
   },
-  "validDomains": ["microsoft.github.io"],
+  "validDomains": ["nandincloud.z7.web.core.windows.net"],
   "localizationInfo": {
     "defaultLanguageTag": "en-us"
   },
   "meetingExtensionDefinition": {
     "videoFilters": [
       {
-        "id": "c2cf81fd-a1c0-4742-b41a-ef969b3ed490",
-        "name": "Others_half",
+        "id": "c2cf81fd-a1c0-4742-b41a-ef969b3ed491",
+        "name": "Others_half (T2.1)",
         "thumbnail": "half.png"
       },
       {
-        "id": "b0c8896c-7be8-4645-ae02-a8bc9b0355e5",
-        "name": "Others_gray scale",
+        "id": "b0c8896c-7be8-4645-ae02-a8bc9b0355e1",
+        "name": "Others_gray scale (T2.1)",
         "thumbnail": "gray.png"
       }
     ],
-    "videoFiltersConfigurationUrl": "https://microsoft.github.io/teams-videoapp-sample/app/"
+    "videoFiltersConfigurationUrl": "https://nandincloud.z7.web.core.windows.net/t2.1/"
   }
 }

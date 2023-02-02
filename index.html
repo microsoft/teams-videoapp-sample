@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video app sample</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1 class="app-title">Video app sample</h1>
     <div class="horizontal">
       <div class="filter" id="filter-half">
@@ -18,8 +18,15 @@
     </div>
     <link rel="stylesheet" type="text/css" href="./src/index.css" />
     <canvas id="canvas" width="480" height="360"></canvas>
-    <video id="streamSource" height="360" width="480" src="./SampleVideo.mp4" autoplay muted loop></video>
-    <script src="./src/fake-texture-stream-api.js"></script>
+    <video
+      id="streamSource"
+      height="360"
+      width="480"
+      src="./SampleVideo.mp4"
+      autoplay
+      muted
+      loop
+    ></video>
     <script src="./src/index.js" type="module"></script>
-</body>
+  </body>
 </html>
