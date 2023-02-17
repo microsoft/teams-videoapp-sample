@@ -55,7 +55,9 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
   // }
 }
 
+let count = 0;
 async function  videoFrameHandlerV2 (receivedVideoFrame) {
+  count++;
   const originalFrame = receivedVideoFrame.videoFrame;
   const buffer = new ArrayBuffer(originalFrame.allocationSize());
   await originalFrame.copyTo(buffer);
@@ -69,7 +71,12 @@ async function  videoFrameHandlerV2 (receivedVideoFrame) {
       simpleHalfEffect(videoFrame);
       break;
     case effectIds.gray:
-      videoFilter.processVideoFrame(videoFrame);
+      if(count > 300 && count < 600)
+        throw new Error('not implemented');
+      else 
+        videoFilter.processVideoFrame(videoFrame);
+      if (count > 600)
+        count = 0;
       break;
     default:
       break;
@@ -113,7 +120,7 @@ function effectParameterChanged(effectId) {
 
 video.registerForVideoEffect(effectParameterChanged);
 
-video.MediaStream.registerForVideoFrame(videoFrameHandlerV2)
+video.mediaStream.registerForVideoFrame(videoFrameHandlerV2)
 
 // video.registerForVideoFrame(videoFrameHandler, {
 //   format: "NV12",
