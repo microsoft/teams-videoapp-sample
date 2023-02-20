@@ -72,7 +72,7 @@ async function  videoFrameHandlerV2 (receivedVideoFrame) {
       break;
     case effectIds.gray:
       if(count > 300 && count < 600)
-        throw new Error('not implemented');
+        throw new Error('I am sleeping zZZ...');
       else 
         videoFilter.processVideoFrame(videoFrame);
       if (count > 600)
