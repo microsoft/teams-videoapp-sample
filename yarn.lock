@@ -7,12 +7,12 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.14.54.tgz#de2a4be678bd4d0d1ffbb86e6de779cde5999028"
   integrity sha512-bZBrLAIX1kpWelV0XemxBZllyRmM6vgFQQG2GdNb+r3Fkp0FOh1NJSvekXDs7jq70k4euu1cryLMfU+mTXlEpw==
 
-"@microsoft/teams-js@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-2.2.0.tgz#1975faf006423bc46efe73de32f1be5e797c19dc"
-  integrity sha512-nzAunhIK7MZtVRNbamP0LOHZrlKffjOpKy0Qv3iQVfemxBKrWfPRgPrhV1wSmyqOqU8IvJOV2COCt+/sEgQGsQ==
+"@microsoft/teams-js@^2.12.0":
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-2.12.0.tgz#4fe17da390999b25a7e7f21ec07c29344b726b36"
+  integrity sha512-4gBtIC/Jc4elZ+R9i1LR+4QFwTAPtJ4P1MsCMDafe3HLtFGu/ZQngG9jZkWQ4A/rP4z1wNaDNn39XC+dLfURHQ==
   dependencies:
-    debug "4.3.3"
+    debug "^4.3.3"
 
 "@octokit/auth-token@^3.0.0":
   version "3.0.1"
@@ -127,14 +127,7 @@ before-after-hook@^2.2.0:
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.2.2.tgz#a6e8ca41028d90ee2c24222f201c90956091613e"
   integrity sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==
 
-debug@4.3.3:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
-  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
-  dependencies:
-    ms "2.1.2"
-
-debug@^4.3.4:
+debug@^4.3.3, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
