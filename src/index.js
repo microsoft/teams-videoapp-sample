@@ -55,7 +55,7 @@ function videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError) {
   // }
 }
 
-  async function videoStreamHandler(receivedVideoFrame) {
+async function videoStreamHandler(receivedVideoFrame) {
 
   const originalFrame = receivedVideoFrame.videoFrame;
   const buffer = new ArrayBuffer(originalFrame.allocationSize());
