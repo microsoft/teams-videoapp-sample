@@ -2,6 +2,7 @@ import { app, video } from "@microsoft/teams-js";
 
 import { WebglVideoFilter } from "./webgl-video-filter";
 import {StreamHandlerGrayFilter } from "./stream-handler-gray";
+import {StreamHandlerHalfFilter } from "./stream-handler-half";
 
 app.initialize().then(() => {
 // This is the effect for processing
@@ -33,8 +34,9 @@ function simpleHalfEffect(videoFrame) {
 
 let canvas = new OffscreenCanvas(480,360);
 let videoFilter = new WebglVideoFilter(canvas);
-let streamHandlerGrayFilter = new StreamHandlerGrayFilter();
 videoFilter.init();
+let streamHandlerGrayFilter = new StreamHandlerGrayFilter();
+let streamHandlerHalfFilter = new StreamHandlerHalfFilter(simpleHalfEffect);
 //Sample video effect
 function videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError) {
   switch (selectedEffectId) {
@@ -63,6 +65,8 @@ async function videoStreamHandler(receivedVideoFrame) {
   switch (selectedEffectId) {
     case effectIds.gray:
       return streamHandlerGrayFilter.processVideoFrame(originalFrame);
+    case effectIds.half:
+      return streamHandlerHalfFilter.processVideoFrame(originalFrame);
     default:
       return Promise.reject('wrong effect id');
   }
