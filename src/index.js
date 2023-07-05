@@ -16,11 +16,9 @@ let effectIds = {
   gray: "b0c8896c-7be8-4645-ae02-a8bc9b0355e5",
 }
 
-// This is the effect linked with UI
-let uiSelectedEffect = {};
 let selectedEffectId = undefined;
-let errorOccurs = false;
-let useSimpleEffect = false;
+
+//Sample video effect
 function simpleHalfEffect(videoFrame) {
   const maxLen =
     (videoFrame.height * videoFrame.width) /
@@ -37,7 +35,7 @@ let videoFilter = new WebglVideoFilter(canvas);
 videoFilter.init();
 let streamHandlerGrayFilter = new StreamHandlerGrayFilter();
 let streamHandlerHalfFilter = new StreamHandlerHalfFilter(simpleHalfEffect);
-//Sample video effect
+
 function videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError) {
   switch (selectedEffectId) {
     case effectIds.half:
