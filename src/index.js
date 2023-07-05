@@ -1,6 +1,7 @@
 import { app, video } from "@microsoft/teams-js";
 
 import { WebglVideoFilter } from "./webgl-video-filter";
+import {StreamHandlerGrayFilter } from "./stream-handler-gray";
 
 app.initialize().then(() => {
 // This is the effect for processing
@@ -32,6 +33,7 @@ function simpleHalfEffect(videoFrame) {
 
 let canvas = new OffscreenCanvas(480,360);
 let videoFilter = new WebglVideoFilter(canvas);
+let streamHandlerGrayFilter = new StreamHandlerGrayFilter();
 videoFilter.init();
 //Sample video effect
 function videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError) {
@@ -58,32 +60,12 @@ function videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError) {
 async function videoStreamHandler(receivedVideoFrame) {
 
   const originalFrame = receivedVideoFrame.videoFrame;
-  const buffer = new ArrayBuffer(originalFrame.allocationSize());
-  await originalFrame.copyTo(buffer);
-  const videoFrame = {
-    width: originalFrame.codedWidth,
-    height: originalFrame.codedHeight,
-    videoFrameBuffer: new Uint8ClampedArray(buffer),
+  switch (selectedEffectId) {
+    case effectIds.gray:
+      return streamHandlerGrayFilter.processVideoFrame(originalFrame);
+    default:
+      return Promise.reject('wrong effect id');
   }
-
-  let notifyVideoProcessed, notifyError;
-
-  const promise = new Promise((resolve, reject) => {
-    notifyVideoProcessed = () => {
-      resolve(
-        new VideoFrame(videoFrame.videoFrameBuffer, {
-          codedHeight: videoFrame.height,
-          codedWidth: videoFrame.width,
-          format: originalFrame.format,
-          timestamp: originalFrame.timestamp,
-        })
-      );
-    };
-    notifyError = reject;
-  });
-
-  videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError);
-  return promise;
 }
 
 function clearSelect() {
