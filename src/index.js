@@ -40,16 +40,19 @@ function videoBufferHandler(videoFrame, notifyVideoProcessed, notifyError) {
   switch (selectedEffectId) {
     case effectIds.half:
       simpleHalfEffect(videoFrame);
+      //send notification the effect processing is finshed.
+      notifyVideoProcessed();
       break;
     case effectIds.gray:
-      videoFilter.processVideoFrame(videoFrame);
+      setTimeout(() => {
+        videoFilter.processVideoFrame(videoFrame);
+        //send notification the effect processing is finshed.
+        notifyVideoProcessed();
+      }, 100);
       break;
     default:
       break;
   }
-
-  //send notification the effect processing is finshed.
-  notifyVideoProcessed();
 
   //send error to Teams if any
   // if (errorOccurs) {
@@ -64,6 +67,7 @@ async function videoStreamHandler(receivedVideoFrame) {
     case effectIds.gray:
       return streamHandlerGrayFilter.processVideoFrame(originalFrame);
     case effectIds.half:
+      await new Promise((resolve) => setTimeout(resolve, 100));
       return streamHandlerHalfFilter.processVideoFrame(originalFrame);
     default:
       return Promise.reject('wrong effect id');
@@ -79,7 +83,7 @@ function effectParameterChanged(effectId) {
   console.log(effectId);
   if (selectedEffectId === effectId) {
     console.log('effect not changed');
-    return;
+    return Promise.resolve();;
   }
   selectedEffectId = effectId;
 
