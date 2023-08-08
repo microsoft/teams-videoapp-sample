@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.14.54.tgz#de2a4be678bd4d0d1ffbb86e6de779cde5999028"
   integrity sha512-bZBrLAIX1kpWelV0XemxBZllyRmM6vgFQQG2GdNb+r3Fkp0FOh1NJSvekXDs7jq70k4euu1cryLMfU+mTXlEpw==
 
-"@microsoft/teams-js@^2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-2.12.0.tgz#4fe17da390999b25a7e7f21ec07c29344b726b36"
-  integrity sha512-4gBtIC/Jc4elZ+R9i1LR+4QFwTAPtJ4P1MsCMDafe3HLtFGu/ZQngG9jZkWQ4A/rP4z1wNaDNn39XC+dLfURHQ==
+"@microsoft/teams-js@^2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/teams-js/-/teams-js-2.14.0.tgz#4009fe936e8c230336c6484277a6410131747bb4"
+  integrity sha512-1KzAPLI6N5HxR8QuFEktGbqCWKzpHJoLhMNHkiY8/9bNJAEwXyBiB4Q+5WUE14LT7JELhdQAy/fw9Y26lJ/5Bw==
   dependencies:
     debug "^4.3.3"
 
