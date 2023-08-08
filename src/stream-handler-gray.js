@@ -7,8 +7,10 @@ export class StreamHandlerGrayFilter {
     if (!this.gl) {
       throw new Error("WebGL2 not supported");
     }
+    this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
     this._setupShaders();
     this._setupBuffers();
+    this._bindTexture();
   }
 
   _setupShaders() {
@@ -108,6 +110,11 @@ export class StreamHandlerGrayFilter {
     gl.vertexAttribPointer(texCoordAttributeLocation, 2, gl.FLOAT, false, 0, 0);
   }
 
+  _bindTexture() {
+    const {gl} = this;
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+  }
+
   async processVideoFrame(videoFrame) {
     try {
       const { gl, program } = this;
@@ -116,23 +123,19 @@ export class StreamHandlerGrayFilter {
         throw new Error("Program not initialized");
       }
 
-      const imageBitmap = await createImageBitmap(videoFrame, {imageOrientation: "flipY"}/* We need this otherwise the frame is rendered upside down */);
-
-      this.canvas.width = imageBitmap.width;
-      this.canvas.height = imageBitmap.height;
-      this.gl.viewport(0, 0, imageBitmap.width, imageBitmap.height);
-      const texture = gl.createTexture();
-      gl.bindTexture(gl.TEXTURE_2D, texture);
+      this.canvas.width = videoFrame.codedWidth;
+      this.canvas.height = videoFrame.codedHeight;
+      this.gl.viewport(0, 0, videoFrame.codedWidth, videoFrame.codedHeight);
       gl.texImage2D(
         gl.TEXTURE_2D,
         0,
         gl.RGBA,
-        imageBitmap.width,
-        imageBitmap.height,
+        videoFrame.codedWidth,
+        videoFrame.codedHeight,
         0,
         gl.RGBA,
         gl.UNSIGNED_BYTE,
-        imageBitmap
+        videoFrame
       );
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
