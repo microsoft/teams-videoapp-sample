@@ -41,7 +41,7 @@
             0,
             gl.LUMINANCE,
             gl.UNSIGNED_BYTE,
-            videoFrame.data.subarray(0, uOffset)
+            videoFrame.videoFrameBuffer.subarray(0, uOffset)
         );
 
         gl.bindTexture(gl.TEXTURE_2D, this.textureUV);
@@ -54,7 +54,7 @@
             0,
             gl.LUMINANCE_ALPHA,
             gl.UNSIGNED_BYTE,
-            videoFrame.data.subarray(uOffset, videoFrame.data.length)
+            videoFrame.videoFrameBuffer.subarray(uOffset, videoFrame.videoFrameBuffer.length)
         );
 
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
@@ -62,14 +62,14 @@
 
         // Get the YUV data from the effectPixelBuffer  
         for (let i = 0; i < uOffset; i += 1) {
-            videoFrame.data[i] = this.effectPixelBuffer[4 * i];
+            videoFrame.videoFrameBuffer[i] = this.effectPixelBuffer[4 * i];
         }
 
         let widthIndex = 0;
         let curIndex = 0;
-        for (let i = uOffset; i < videoFrame.data.length; i += 2) {
-            videoFrame.data[i] = this.effectPixelBuffer[ 4 * curIndex + 1];
-            videoFrame.data[i + 1] = this.effectPixelBuffer[4 * curIndex + 2];
+        for (let i = uOffset; i < videoFrame.videoFrameBuffer.length; i += 2) {
+            videoFrame.videoFrameBuffer[i] = this.effectPixelBuffer[ 4 * curIndex + 1];
+            videoFrame.videoFrameBuffer[i + 1] = this.effectPixelBuffer[4 * curIndex + 2];
             widthIndex += 2
             curIndex += 2
             if (widthIndex > videoFrame.width) {
